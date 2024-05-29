@@ -1,0 +1,4 @@
+[
+    { "id": 1, "text": "Task 1", "completed": false, "timestamp": "2024-05-30" },
+    { "id": 2, "text": "Task 2", "completed": true, "timestamp": "2024-05-31" }
+]

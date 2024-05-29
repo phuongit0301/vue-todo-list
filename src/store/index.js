@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import axios from 'axios'
 
 const saveStatePlugin = store => {
   store.subscribe((mutation, state) => {
@@ -31,7 +32,21 @@ export default createStore({
     },
     deleteTodo (state, todoId) {
       state.todos = state.todos.filter(todo => todo.id !== todoId)
+    },
+    setTodos(state, todos) {
+      state.todos = todos;
     }
+  },
+  actions: {
+    async fetchTodos({ commit }) {
+      try {
+        const response = await axios.get('/todos.json');
+        commit('setTodos', response.data);
+      } catch (error) {
+        console.error('Error fetching todos:', error);
+        // Handle error
+      }
+    },
   },
   plugins: [saveStatePlugin]
 })

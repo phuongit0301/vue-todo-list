@@ -27,6 +27,11 @@ export default {
     }
   },
   computed: mapState(['todos']),
+  mounted() {
+    if (!localStorage.getItem('todos')) {
+      this.$store.dispatch('fetchTodos');
+    }
+  },
   methods: {
     selectTodoForEdit(todo) {
       this.selectedTodo = { ...todo }
