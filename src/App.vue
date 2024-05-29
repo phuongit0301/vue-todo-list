@@ -1,26 +1,41 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <CompanyNews />
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Todo App</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/" exact>All Tasks</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/completed">Completed Tasks</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/in-progress">In Progress Tasks</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-3">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CompanyNews from './components/CompanyNews'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { CompanyNews }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.router-link-exact-active {
+  font-weight: bold;
+  color: #0d6efd; /* or any color you prefer */
 }
 </style>
