@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
-import axios from 'axios'
+
+import todoService from '@/services/todoService'
 
 const saveStatePlugin = store => {
   store.subscribe((mutation, state) => {
@@ -40,8 +41,8 @@ export default createStore({
   actions: {
     async fetchTodos({ commit }) {
       try {
-        const response = await axios.get('/todos.json');
-        commit('setTodos', response.data);
+        const todos = await todoService.fetchTodos();
+        commit('setTodos', todos);
       } catch (error) {
         console.error('Error fetching todos:', error);
         // Handle error
